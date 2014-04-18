@@ -20,4 +20,4 @@ module Faraday::Bang
 end
 
 Faraday.extend(Faraday::Bang)
-Faraday::Connection.include(Faraday::Bang)
+Faraday::Connection.send(:include, Faraday::Bang)
