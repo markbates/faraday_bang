@@ -1,12 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'faraday'
 require 'faraday_bang/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "faraday_bang"
-  spec.version       = Faraday::Bang::VERSION
+  spec.version       = FaradayBang::VERSION
   spec.authors       = ["Mark Bates"]
   spec.email         = ["mark@markbates.com"]
   spec.summary       = %q{Adds error raising ! methods to Farday.}
