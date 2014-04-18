@@ -5,9 +5,9 @@ module Faraday::Bang
     define_method("#{verb}!") do |*args|
       response = self.send(verb, *args)
       if response.status >= 400
-        err_name = "Faraday::Bang::Response#{response.status}Error"
-        if Module.const_defined?(err_name)
-          klass = Module.const_get(err_name)
+        err_name = "Response#{response.status}Error"
+        if Faraday::Bang.const_defined?(err_name)
+          klass = Faraday::Bang.const_get(err_name)
           raise klass.new(response)
         else
           raise Faraday::Bang::ResponseError.new(response)
