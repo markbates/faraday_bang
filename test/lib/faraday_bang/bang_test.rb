@@ -8,7 +8,14 @@ describe Faraday::Bang do
 
   [Faraday, Faraday.new].each do |klass|
 
-    Faraday::Connection::METHODS.each do |verb|
+    Faraday::Bang::SUPPORTED_HTTP_METHODS.each do |verb|
+
+      it "##{verb}! passes a block" do
+        block = Proc.new do |req|
+          raise "dummy error #{verb}"
+        end
+        ->{ klass.send("#{verb}!", &block) }.must_raise RuntimeError
+      end
 
       describe "##{verb}!" do
 
